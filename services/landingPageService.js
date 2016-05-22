@@ -18,11 +18,12 @@ function landingPageService($http,CONSTANTS){
 
 
     function checkDomainName(domainname, tldstype){
-        var url =  CONSTANTS.apiEndpoint + "backendServices/checkDomainName.php";
-        var data = {"name" : domainname, "tldstype": tldstype};
+        //var url =  CONSTANTS.apiEndpoint + "backendServices/checkDomainName.php";
+        var url =  CONSTANTS.apiEndpoint + "apis/check-domain-name?name="+domainname+"&tldstype="+tldstype;
+        //var data = {"name" : domainname, "tldstype": tldstype};
         var config = CONSTANTS.apiHeaders;
 
-        return $http.post(url,data,config).then(successFn, errorFn);
+        return $http.get(url,config).then(successFn, errorFn);
 
         function successFn(data){
             service.domainRes = data;
@@ -34,7 +35,8 @@ function landingPageService($http,CONSTANTS){
     }
 
     function getNormalDomainPrice(domainname, tldstype){
-        var url =  CONSTANTS.apiEndpoint + "backendServices/getPricingForProducts.php";
+        //var url =  CONSTANTS.apiEndpoint + "backendServices/getPricingForProducts.php";
+        var url =  CONSTANTS.apiEndpoint + "apis/check-product-priciing";
         var config = CONSTANTS.apiHeaders;
 
         return $http.get(url,config).then(successFn, errorFn);
@@ -49,11 +51,12 @@ function landingPageService($http,CONSTANTS){
     }
 
     function checkPremiumDomainName(domainname, tldstype){
-        var url =  CONSTANTS.apiEndpoint + "backendServices/checkPremiumDomainName.php";
-        var data = {"name" : domainname, "tldstype": tldstype};
+        //var url =  CONSTANTS.apiEndpoint + "backendServices/checkPremiumDomainName.php";
+        var url =  CONSTANTS.apiEndpoint + "apis/check-premium-domain?name="+domainname+"&tldstype="+tldstype;
+        //var data = {"name" : domainname, "tldstype": tldstype};
         var config = CONSTANTS.apiHeaders;
 
-        return $http.post(url,data,config).then(successFn, errorFn);
+        return $http.get(url,config).then(successFn, errorFn);
 
         function successFn(data){
             service.premiumdomainRes = data;
