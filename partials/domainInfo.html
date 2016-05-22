@@ -1,0 +1,91 @@
+<div id="object-table" ng-if="vm.checkDomainNameResult !== null">
+    <h4 align="center" style="font-weight: bold;background-color: gainsboro">Availability Check</h4>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th class="c1">Domain Name</th>
+            <th class="c1">Status</th>
+            <th class="c1">Price</th>
+            <th class="c1">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="leftpad15">{{vm.displayFullDomainName}}</td>
+            <td class="leftpad15">{{vm.checkDomainNameResult}}</td>
+            <td class="leftpad15">₹{{vm.normalDomainPriceResult}}/yr</td>
+            <td><button type="button" class="premiumDomainTableAddButton" ng-if="vm.normalDomainBtnVal === 'add'"
+                        ng-click="vm.addPremiumDomainPrice(vm.normalDomainPriceResult,vm.displayFullDomainName,'normal');
+                        vm.normalDomainBtnVal = 'remove'">Add
+                </button>
+                <button type="button" class="premiumDomainTableRemoveButton" ng-if="vm.normalDomainBtnVal === 'remove'"
+                        ng-click="vm.removePremiumDomainPrice(vm.normalDomainPriceResult,vm.displayFullDomainName,'normal');
+                        vm.normalDomainBtnVal = 'add'">Remove
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <h4 align="center" style="font-weight: bold; background-color: gainsboro">List of Premium Domains</h4>
+    <input type="text" placeholder="Search" class="searchPremiumDomains" ng-model="vm.search">
+    <table class="table table-bordered premiumDomainTable">
+        <thead>
+        <tr>
+            <th class="c1">
+                <a href="" ng-click="vm.order('preDomain')">Domain Name</a>
+                <span class="sortorder" ng-show="vm.predicate === 'preDomain'"
+                 ng-class="{reverse:vm.reverse}"></span>
+            </th>
+            <th class="c1">
+                <a href="" ng-click="vm.order('price')">Price</a>
+                <span class="sortorder" ng-show="vm.predicate === 'price'"
+                      ng-class="{reverse:vm.reverse}"></span>
+                </th>
+            <th class="c1">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="domName in vm.preimiumDomainList| filter:vm.search | orderBy:vm.predicate:vm.reverse">
+            <td class="leftpad15">{{domName.preDomain}}</td>
+            <td class="leftpad15">₹{{domName.price}}</td>
+            <td><button type="button" class="premiumDomainTableAddButton" ng-if="domName.btnVal === 'add'"
+                 ng-click="vm.addPremiumDomainPrice(domName.price, domName.preDomain,'premium')">Add
+            </button>
+                <button type="button" class="premiumDomainTableRemoveButton" ng-if="domName.btnVal === 'remove'"
+                        ng-click="vm.removePremiumDomainPrice(domName.price,domName.preDomain,'premium')">Remove
+                </button>
+            </td>
+        </tr>
+        </tbody>
+        <div align="right" class="totalPriceDiv">
+            <div align="left">
+            <p class="totalPriceText">Total Price:</p><br/>
+            <p class="totalPriceValue">₹{{vm.totalPrice}}</p>
+            <button type="button" class="checkoutButton" data-toggle="modal" data-target="#checkoutModal">Checkout</button>
+            <button type="button" class="clearPriceButton" ng-click="vm.clearTotalPrice()">Clear Price</button>
+            </div>
+        </div>
+    </table>
+
+    <!-- Modal to display checkout modal - START -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Proceed to Payment</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="amountCheckoutText">Total amount to Pay:</p>
+                    <p class="amountCheckoutText">₹{{vm.totalPrice}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal to display checkout modal - END   -->
+
+
+</div>

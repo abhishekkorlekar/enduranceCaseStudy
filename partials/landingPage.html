@@ -1,0 +1,36 @@
+<h1 align="center" style="background-color: grey">
+Domain Name Search
+</h1>
+<form name="domainNameSearchForm" novalidate>
+	<div align="center">
+		<input type="text" name="domainNameSearchInput" placeholder="Search Domain Name" ng-model="vm.domainName"
+			   style="width: 600px; height: 50px;
+		background-color: snow" required>
+		<select class="btn btn-primary" ng-model="vm.tldsType" style="height: 50px">
+			<option value="com">.com</option>
+			<option value="net">.net</option>
+			<option value="in">.in</option>
+			<option value="biz">.biz</option>
+		</select>
+		<button type="submit" class="btn btn-primary" style="height: 50px" ng-disabled="domainNameSearchForm.$invalid"
+		ng-click="vm.searchDoaminName()">
+			Search
+		</button><br/>
+		<div align="center" ng-if="vm.showSpinner">
+			<div class="spinner">
+				<div class="rect1"></div>
+				<div class="rect2"></div>
+				<div class="rect3"></div>
+				<div class="rect4"></div>
+				<div class="rect5"></div>
+			</div>
+			<p style="font-weight: bold">Searching Domain Names</p>
+		</div>
+		<span style="color: red" ng-show="domainNameSearchForm.domainNameSearchInput.$touched &&
+		 domainNameSearchForm.domainNameSearchInput.$invalid">Input Field is Mandatory</span>
+	</div>
+	<div class="productInfoDiv">
+		<ui-view></ui-view>
+	</div>
+
+</form>

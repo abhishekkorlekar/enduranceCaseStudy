@@ -1,0 +1,115 @@
+.spinner {
+  margin: auto;
+  width: 62px;
+  height: 40px;
+  text-align: center;
+  font-size: 10px;
+ // float: left;
+}
+
+.spinner > div {
+  background-color: #333;
+  margin-right: 2px;
+  height: 100%;
+  width: 6px;
+  display: inline-block;
+
+  -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+  animation: sk-stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect1 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+.spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+
+}
+
+.spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+
+
+}
+
+.spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+
+@-webkit-keyframes sk-stretchdelay {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
+  20% { -webkit-transform: scaleY(1.0) }
+
+
+  0%   {background-color: #da173e;}
+  25%  {background-color: #006bb9;}
+  50%  {background-color: #98cee6;}
+  75% {background-color: #913895;}
+  100% {background-color: #58409b;}
+}
+
+@keyframes sk-stretchdelay {
+  0%, 40%, 100% {
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }  20% {
+       transform: scaleY(1.0);
+       -webkit-transform: scaleY(1.0);
+     }
+
+
+  0%   {background-color: #da173e;}
+  25%  {background-color: #006bb9;}
+  50%  {background-color: #98cee6;}
+  75% {background-color: #913895;}
+  100% {background-color: #58409b;}
+
+}
+
+@keyframes color_change1 {
+  from { background-color: #333; }
+  to { background-color: #d42623; }
+}
+@keyframes color_change2 {
+  from { background-color: #333; }
+  to { background-color: #006bb9; }
+}
+@keyframes color_change3 {
+  from { background-color: #333; }
+  to { background-color: #98cee6; }
+}
+@keyframes color_change4 {
+  from { background-color: #333; }
+  to { background-color: #913895; }
+}
+@keyframes color_change5 {
+  from { background-color: #333; }
+  to { background-color: #58409b; }
+}
+/*
+.spinner .rect1{background: #d42623}
+.spinner .rect2{background: #006bb9}
+.spinner .rect3{background: #98cee6}
+.spinner .rect4{background: #913895}
+.spinner .rect5{background: #58409b}
+*/
+
+
+.my-loader{line-height: 40px}
+
+
+.full-page .spinner {
+  height: 60px;
+}
+
+.full-page .my-loader{line-height: 60px}
+
